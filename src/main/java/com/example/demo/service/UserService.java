@@ -3,19 +3,31 @@ package com.example.demo.service;
 import com.example.demo.dto.RequestDTO;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 
+@Service
 public class UserService {
 
 
-    UserRepository userRepository;
+    // TODO : 1. 간이 DB를 할 자료 구조 Map을 정의 , 1-1 클래스 내 save 메서드 생성
 
-    public Boolean createUser(RequestDTO requestDTO){
+    @Autowired
+    private UserRepository userRepository;
 
-        User request = request.from();
-        Boolean iscreated = userRepository.save(user);
+    public Boolean createUser(RequestDTO requestDTO) {
 
-        return iscreated;
+        User request = requestDTO.create();
+
+
+        Boolean createdUser = userRepository.save(request);
+        if (Objects.isNull(createdUser)) {
+            return false;
+        }
+        return true;
+
 
     }
 }

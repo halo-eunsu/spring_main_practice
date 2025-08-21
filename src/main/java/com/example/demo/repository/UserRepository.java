@@ -1,4 +1,52 @@
 package com.example.demo.repository;
 
-public class UserRepository {
+import com.example.demo.repository.entity.User;
+import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
+
+import java.time.LocalDateTime;
+import java.util.*;
+
+@Repository
+@RequiredArgsConstructor
+public class UserRepository implements IRepository<User, Integer> {
+    private static final Map<Integer, User> users = new HashMap<>();
+
+    @PostConstruct
+    public void init() {
+        users.put(1, new User(1, "aaron", "123", "Aaron", 10, "DEVELOPER", "Backend", LocalDateTime.now().plusMinutes(10)));
+        users.put(2, new User(2, "baron", "123", "Baron", 20, "DEVELOPER", "Frontend", LocalDateTime.now().plusMinutes(20)));
+        users.put(3, new User(3, "caron", "123", "Caron", 30, "ENGINEER", "DevOps/SRE", LocalDateTime.now().plusMinutes(30)));
+    }
+
+    private int idGenerate() {
+        return Collections.max(users.keySet()) + 1;
+    }
+
+    public Optional<User> findById(Integer id) {
+        return Optional.ofNullable(users.get(id));
+    }
+
+    public List<User> findAll() {
+        return users.values().stream().toList();
+    }
+
+    public Boolean save(User entity) {
+        int generatedId = idGenerate();
+        entity.setId(generatedId);
+        users.put(generatedId, entity);
+
+
+        if (Objects.isNull(users.get(generatedId))) {
+            return false;
+        }
+        return true;
+        //return users.get(generatedId);
+
+    }
+
+    public void delete(Integer id) {
+        users.remove(id);
+    }
 }
