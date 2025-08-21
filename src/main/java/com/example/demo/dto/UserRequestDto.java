@@ -6,7 +6,7 @@ import com.example.demo.repository.entity.User;
 
 @Getter
 @NoArgsConstructor
-public class UserRequestDTO {
+public class UserRequestDto {
 
 
     String name;

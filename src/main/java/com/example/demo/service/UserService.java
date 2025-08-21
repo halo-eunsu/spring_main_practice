@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.UserRequestDTO;
-import com.example.demo.dto.UserResponseDTO;
+import com.example.demo.dto.UserRequestDto;
+import com.example.demo.dto.UserResponseDto;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.entity.User;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ public class UserService {
 
     private UserRepository userRepository;
 
-    public UserResponseDTO createUser(UserRequestDTO request) {
+    public UserResponseDto createUser(UserRequestDto request) {
 
         User user = request.create();
 
