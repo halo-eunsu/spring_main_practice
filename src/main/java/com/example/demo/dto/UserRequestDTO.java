@@ -15,7 +15,7 @@ public class UserRequestDTO {
     String specialty;
 
 
-    private User create() {
+    public User create() {
 
         User user = new User();
 
@@ -24,6 +24,6 @@ public class UserRequestDTO {
         user.setPassword(password);
         user.setSpecialty(specialty);
         return user;
-        
+
     }
 }

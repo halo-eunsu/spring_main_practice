@@ -13,5 +13,5 @@ public class UserResponseDTO {
     String password;
     String specialty;
 
-    
+    public
 }
