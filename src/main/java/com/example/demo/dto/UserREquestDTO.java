@@ -15,5 +15,10 @@ public class UserREquestDTO {
     String specialty;
 
 
-    private User create()
+    private User create() {
+
+        User user = new User();
+
+        
+    }
 }
