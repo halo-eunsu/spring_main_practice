@@ -19,6 +19,11 @@ public class UserREquestDTO {
 
         User user = new User();
 
+        user.setName(name);
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setSpecialty(specialty);
+        return user;
         
     }
 }
