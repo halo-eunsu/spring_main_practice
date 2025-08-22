@@ -1,10 +1,11 @@
 package com.example.demo.dto;
 
 import com.example.demo.repository.entity.User;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 public class UserResponseDto {
 
@@ -16,6 +17,13 @@ public class UserResponseDto {
 
     public UserResponseDto from(User entity) {
 
-        
+        return new UserResponseDto(
+
+                entity.getName(),
+                entity.getUsername(),
+                entity.getPassword(),
+                entity.getSpecialty()
+
+        );
     }
 }
